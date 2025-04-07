@@ -10,7 +10,7 @@ DECODED=$(bitcoin-cli -regtest decoderawtransaction $RAW)
 TXID=$(echo $DECODED | jq -r '.txid')
 VOUT1=$(echo $DECODED | jq -r '.vout[0].n')
 VOUT2=$(echo $DECODED | jq -r '.vout[1].n')
-INPUTS="[{\"txid\":\"$TXID\",\"vout\":$VOUT1}, {\"txid\":\"$TXID\",\"vout\":$VOUT2}]"
+INPUTS="[{\"txid\":\"$TXID\",\"vout\":$VOUT1},{\"txid\":\"$TXID\",\"vout\":$VOUT2}]"
 OUTPUTS="{\"data\":\"$HASHED\",\"2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP\":0.20000000 }"
 # Create the raw transaction with the inputs, outputs
 RAW_TX=$(bitcoin-cli -regtest createrawtransaction $INPUTS $OUTPUTS)
