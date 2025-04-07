@@ -18,7 +18,7 @@ VOUT1=$(echo $TX_RAW | jq -r '.vout[0].n')
 VOUT2=$(echo $TX_RAW | jq -r '.vout[1].n')
 
 INPUTS="[{txid:\"$TXID\", vout: $VOUT1}, {txid:\"$TXID\", vout: $VOUT2}"
-OUTPUTS="[{\"2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP\": 20000000}]"
+OUTPUTS="{\"2MvLcssW49n9atmksjwg2ZCMsEMsoj3pzUP\": 20000000}"
 
 # Create the raw transaction with the inputs, outputs, and locktime
 RAW_TX=$(bitcoin-cli -regtest createrawtransaction "$INPUTS" "$OUTPUTS" "$LOCKTIME")
